@@ -7,6 +7,8 @@ onready var tilemap = get_parent().find_node("TileMap")
 onready var vp = get_viewport()
 onready var cam = get_parent().find_node("Camera2D")
 
+
+
 enum TILE {DIRT, GRASS}
 
 var snscript = preload("res://SoftNoise/softnoise.gd")
@@ -15,6 +17,8 @@ var softnoise
 func _ready():
 	print(snscript)
 	randomize()
+	
+	
 	
 	softnoise = snscript.SoftNoise.new()
 	
@@ -42,7 +46,7 @@ func _ready():
 		var bV = _bigNoise[b]
 #		print("a"+str(a)+"b"+str(b))
 		var result = softnoise.linearInterpolation(aV,bV,1-(b-i))
-		print(str(b-i))
+#		print(str(b-i))
 		bigNoise.append(result)
 #		print("result"+str(result))
 #	print(bigNoise)
@@ -85,9 +89,9 @@ func isInAir(x, y):
 	pass
 
 func _process(delta):
-	var mouse = vp.get_mouse_position()
+	var mouse = vp.get_mouse_position() * Global.zoom
 	var pos = tilemap.global_position - cam.global_position
-	var tile = tilemap.world_to_map(mouse-pos-vp.get_visible_rect().size/2)
+	var tile = tilemap.world_to_map(mouse-pos-vp.get_visible_rect().size/2*Global.zoom)
 #	print(tile)
 	if Input.is_mouse_button_pressed(1) && !isInAir(tile.x, tile.y):
 		tilemap.set_cellv(tile, 0)

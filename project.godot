@@ -14,6 +14,10 @@ config/name="Terra"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/width=256
@@ -21,7 +25,11 @@ window/size/height=144
 window/size/test_width=1024
 window/size/test_height=576
 window/stretch/aspect="keep_height"
-window/stretch/shrink="1"
+window/stretch/shrink="3"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "ch.fischspiele.tilesethelper" )
 
 [rendering]
 

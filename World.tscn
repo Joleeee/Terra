@@ -1,12 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://set.tres" type="TileSet" id=1]
 [ext_resource path="res://Map.gd" type="Script" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://player.png" type="Texture" id=4]
-[ext_resource path="res://UnPacker.gd" type="Script" id=5]
+[ext_resource path="res://Camera.gd" type="Script" id=5]
+[ext_resource path="res://UnPacker.gd" type="Script" id=6]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 12, 26 )
@@ -36,6 +37,7 @@ script = ExtResource( 2 )
 
 [node name="Player" type="KinematicBody2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 0, -200 )
 input_pickable = false
 collision_layer = 1
@@ -56,7 +58,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="1"]
 
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="Player" index="2"]
@@ -83,11 +85,12 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="UnPacker" type="Node2D" parent="." index="2"]
 
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 reset = false
 
 

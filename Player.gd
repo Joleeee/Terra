@@ -8,7 +8,6 @@ var canJump = false
 var jumpTimer = 0.5
 
 func _ready():
-#	print(safemar)
 	pass
 
 func _physics_process(delta):
@@ -19,7 +18,6 @@ func _physics_process(delta):
 		motion.x += 128
 	move_and_slide(motion, Vector2(0,-1))
 	move_and_slide(Vector2(0,vel), Vector2(0,-1))
-	pass
 
 func _process(delta):
 	vel += ace * delta
